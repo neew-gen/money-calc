@@ -1,4 +1,6 @@
 const express = require('express');
+const serveStatic = require('serve-static');
+const path = require('path');
 const bodyParser = require('body-parser');
 const connectMongo = require('./mongoose/connectMongo');
 const findUserForLogin = require('./mongoose/findUserForLogin');
@@ -8,6 +10,7 @@ const registerUser = require('./mongoose/registerUser');
 
 const app = express();
 const jsonParser = bodyParser.json();
+app.use(serveStatic(path.join(__dirname, 'dist')));
 
 connectMongo();
 
@@ -31,7 +34,7 @@ app.post('/api/registerUser', jsonParser, async (req, res) => {
   res.send(created);
 });
 
-// const port = process.env.PORT || 80;
-const port = 3000;
-console.log(`listen on: ${port}`);
+const port = process.env.PORT || 80;
+// const port = 3000;
+// console.log(`listen on: ${port}`);
 app.listen(port);

@@ -10,7 +10,7 @@ const registerUser = require('./mongoose/registerUser');
 
 const app = express();
 const jsonParser = bodyParser.json();
-app.use(serveStatic(path.join(__dirname, 'dist')));
+app.use(serveStatic(path.join(__dirname, '../dist')));
 
 connectMongo();
 

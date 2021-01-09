@@ -7,6 +7,7 @@ const findUserForLogin = require('./mongoose/findUserForLogin');
 const updateRate = require('./mongoose/updateRate');
 const checkEmail = require('./mongoose/checkEmail');
 const registerUser = require('./mongoose/registerUser');
+const createCalendarMatrix = require('./calendar/createCalendarMatrix');
 
 const app = express();
 const jsonParser = bodyParser.json();
@@ -20,7 +21,7 @@ app.post('/api/login', jsonParser, async (req, res) => {
 });
 
 app.patch('/api/updateRate', jsonParser, async (req, res) => {
-  updateRate(req.body.id, req.body.rate);
+  await updateRate(req.body.id, req.body.rate);
   res.send(200);
 });
 
@@ -34,7 +35,12 @@ app.post('/api/registerUser', jsonParser, async (req, res) => {
   res.send(created);
 });
 
-const port = process.env.PORT || 80;
-// const port = 3000;
-// console.log(`listen on: ${port}`);
+app.post('/api/createCalendarMatrix', jsonParser, (req, res) => {
+  const weeks = createCalendarMatrix(req.body);
+  res.send(weeks);
+});
+
+// const port = process.env.PORT || 80;
+const port = 3000;
+console.log(`listen on: ${port}`);
 app.listen(port);

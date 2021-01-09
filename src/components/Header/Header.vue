@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import HeaderLogin from './HeaderLogin.vue';
-import HeaderUser from './HeaderUser.vue';
-import HeaderMenu from './HeaderMenu.vue';
+import HeaderLogin from './headerComponents/HeaderLogin.vue';
+import HeaderUser from './headerComponents/HeaderUser.vue';
+import HeaderMenu from './headerComponents/HeaderMenu.vue';
 
 export default {
   components: {

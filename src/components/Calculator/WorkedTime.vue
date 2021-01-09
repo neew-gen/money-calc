@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TimeInput from '@/components/Calculator/TimeInput.vue';
+import TimeInput from '@/components/Calculator/workedTimeComponents/TimeInput.vue';
 
 export default {
   components: {
